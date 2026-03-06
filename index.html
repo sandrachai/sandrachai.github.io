@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandra Chai | Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      line-height: 1.7;
+    }
+    
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      z-index: 100;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    }
+    
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    
+    .nav-links a:hover { opacity: 1; }
+    
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      padding: 0 2rem;
+    }
+    
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    
+    .hero p {
+      font-size: 1.15rem;
+      font-weight: 300;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .content {
+      background: #f8f7f4;
+      color: #1a1a1a;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    section:last-of-type { border-bottom: none; }
+    #experience { border-bottom: none; }
+    
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.75rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+      color: #1a1a1a;
+      text-transform: uppercase;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    
+    .about-img {
+      width: 100%;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 0.85rem;
+    }
+    
+    .about-text p { margin-bottom: 1rem; font-size: 0.95rem; }
+    .about-text a { color: #1a1a1a; }
+    
+    .exp-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .exp-logo {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 0.65rem;
+      border-radius: 8px;
+    }
+    
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+    
+    .exp-date { font-size: 0.85rem; color: #888; }
+    
+    h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.25rem; }
+    
+    .exp-company { font-size: 0.95rem; color: #666; margin-bottom: 0.5rem; }
+    
+    .exp-desc { font-size: 0.9rem; }
+
+    .exp-desc a, .project a { color: #1a1a1a; }
+    
+    .project {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    .project-img {
+      height: 300px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 0.85rem;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    
+    .project-meta {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-vertical {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    /* Image-left layout: wide image gets more space, text gets less */
+    .project-vertical.img-left {
+      grid-template-columns: 1fr 280px;
+    }
+
+    /* Image-right layout: text gets more space, image constrained */
+    .project-vertical.img-right {
+      grid-template-columns: 280px 1fr;
+    }
+
+    .project-vertical .project-img,
+    .project-vertical .project-img-vertical {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      display: block;
+    }
+    
+    .project-vertical:last-child,
+    .project:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    
+    .project-vertical-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project h3, .project-vertical h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    
+    .project > p, .project-vertical-content > p { font-size: 0.95rem; margin-bottom: 1rem; }
+    
+    .project-vertical-content a, .project a { color: #1a1a1a; }
+    
+    footer {
+      background: #0a0a0a;
+      color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1.25rem;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    footer a:hover { opacity: 1; }
+    
+    @media (max-width: 700px) {
+      .top-nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .nav-links a { font-size: 0.75rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { width:335px; flex:none; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .project-vertical,
+      .project-vertical.img-left,
+      .project-vertical.img-right { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <div class="logo">Sandra Chai</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="worksamples.html">Work Samples</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm Sandra</h1>
+      <p style="font-size:1.7em">... a passionate mechanical engineer!</p>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="container">
+
+      <section id="about">
+        <h2>About</h2>
+        <div class="about-grid">
+          <div class="about-img"><img class="about-img" src="static/sandra.jpg" alt="Sandra Chai"></div>
+          <div class="about-text">
+            <p>I'm a mechanical engineer interested in R&amp;D and design for the robotics and aerospace industries. I am currently wrapping up my B.S. in Mechanical Engineering from <a href="https://www.northeastern.edu/" target="_blank" >Northeastern University</a>!</p>
+            <p>I am particularly motivated by difficult real-world design challenges. My approach to engineering blends focused, pragmatic problem solving with big picture thinking.</p>
+            <p>In my free time I enjoy photography, petting cats, and eating delicious food!</p> 
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img width=110 height=110 src="static/simplehuman_logo.jpg">
+          </div>
+          <div>
+            <h3>Product Development Engineering Co-Op</h3>
+            <p class="exp-company">simplehuman · <span class="exp-date">Jan 2025 – Jun 2025</span></p>
+            <p class="exp-desc">Managed testing and validation cycles for two products and brought them to launch, did some fluid dynamics R&amp;D for future products, and analyzed failure modes of existing products</p>
+          </div>
+        </div>
+        
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img width=110 height=110 src="static/honeybee_logo.jpg">
+          </div>
+          <div>
+            <h3>Mechanical Engineering Co-Op</h3>
+            <p class="exp-company">Honeybee Robotics, a Blue Origin company · <span class="exp-date">Jan 2024 – Jun 2024</span></p>
+            <p class="exp-desc">Assembly and testing of deployable mast for a lunar solar array and preliminary prototyping for Blue Origin's New Glenn rocket aerobrake</p>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img width=110 height=110 src="static/neu_aero_logo.jpg">
+          </div>
+          <div>
+            <h3>Rocketry Test Lead</h3>
+            <p class="exp-company">AerospaceNU · <span class="exp-date">Sept 2021 – Apr 2022</span></p>
+            <p class="exp-desc">Conducted high-pressure hydrostatic testing of a liquid-fuel rocket engine, tested thread sealants, and torqued many pipe fittings</p>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">
+            <img width=110 height=110 src="static/daps2.jpg">
+          </div>
+          <div>
+            <h3>Research Assistant</h3>
+            <p class="exp-company">Directed Assembly of Particles and Suspensions Lab · <span class="exp-date">Oct 2021 – Apr 2022</span></p>
+            <p class="exp-desc">Synthesized and tested high thermal conductivity 3D printer filament. Check out <a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202418984" target="_blank">our paper</a> in the Journal of Additive Manufacturing!</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        
+        <div class="project-vertical">
+          <div class="project-vertical-content">
+            <h3>Lunar Array Mast and Power System (LAMPS)</h3>
+            <p>At Honeybee Robotics, I worked a deployable Lunar Solar Array funded by a <a href="https://techport.nasa.gov/projects/116305" target="_blank">NASA Space Technology Mission Directorate contract</a>. <a href="https://www.blueorigin.com/news/honeybee-robotics-deploys-lamps-at-nasa-johnson-space-center" target="_blank">LAMPS was tested</a> at the Johnson Space Center's <a href="https://www.nasa.gov/setmo/facilities/thermal-vacuum-chamber-a/" target="_blank">Chamber A</a>: the same location Apollo 11 and the JWST were tested in!</p>
+           
+            <!-- Add work sample page -->
+            <p> See the complete work sample <a href= "mgse.html" >here</a>! </p>
+          </div>
+          <img class="project-img" src="static/honeybee_lamps.gif">
+        </div>
+
+        <div class="project-vertical">
+          <div class="project-vertical-content">
+            <h3>Cleaning Product Testing &amp; Validation</h3>
+            <p>During my co-op at simplehuman, I was in charge of the entire testing and validation cycle for the simplehuman <a href="https://www.simplehuman.com/pages/indepth-sensor-pump-foam" target="_blank">hand soap tablets</a> and <a href="https://www.simplehuman.com/collections/refills-cleaning-tablets" target="_blank">cleaning tablets</a>. I brought this project from stagnation to launch, and I know (but cannot disclose) every single failure mode!</p>
+          </div>
+          <img class="project-img" src="static/soap2.jpg">
+        </div>
+
+        <div class="project-vertical img-right">
+          <div class="project-vertical-content">
+            <h3>Blue Origin Aerobrake Prototypes</h3>
+            <p>Designed and built the initial 1:50 scale 3D printed <a href= "https://www.linkedin.com/posts/blue-origin_weve-built-a-full-scale-deployable-aerobrake-activity-7397016566472593408-m5ZF?utm_source=share&utm_medium=member_desktop&rcm=ACoAADkwlkkBlWg8bfna3XpIASKpufvecDIhW0w" target="_blank" > aerobrake prototype </a> in &lt;1 week for a demo. Assembled the 1:5 scale prototype, and contributed to the 1:1 model.</p>
+          </div>
+          <img class="project-img" src="static/airbreak.gif">
+        </div>
+
+        <div class="project-vertical img-right">
+          <div class="project-vertical-content">
+            <h3>LAMPS Shipping Coordination</h3>
+            <p>At Honeybee Robotics, I coordinated all the packaging and crating logistics to transport our 3.5-ton lunar solar array from California to NASA JSC in Texas. NASA personnel liked the crates!</p>
+          </div>
+          <img class="project-img" src="static/lamps_truck.png">
+        </div>
+      
+        <!-- add spaces -->
+      </div>
+          </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer id="contact">
+    <a href="mailto:sandrachai.eng@gmail.com" target="_blank">Email</a>
+    <a href="https://www.linkedin.com/in/sandrachai/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/sandrachai" target="_blank">GitHub</a>
+  </footer>
+
+</body>
+</html>

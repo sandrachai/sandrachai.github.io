@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandra Chai | Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      line-height: 1.7;
+    }
+    
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      z-index: 100;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    }
+    
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    
+    .nav-links a:hover { opacity: 1; }
+  
+    
+
+    .content {
+      background: #f8f7f4;
+      color: #1a1a1a;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      padding-top: 35px;
+    }
+    
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    section:last-of-type { border-bottom: none; }
+    #experience { border-bottom: none; }
+    
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.75rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+      color: #1a1a1a;
+      text-transform: uppercase;
+    }
+    
+
+    .sample-header {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .exp-logo {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 0.65rem;
+      border-radius: 8px;
+    }
+    
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+    
+    .exp-date { font-size: 0.85rem; color: #888; }
+    
+    h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.25rem; }
+    
+    
+    .exp-desc { font-size: 0.9rem; }
+    
+    .project {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    .main-project-img {
+      height: 500px;
+      padding-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 0.85rem;
+      max-width: 100%;
+      object-fit: contain;
+      padding-top: 20px;
+    }
+    
+    .project-meta {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-vertical {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    /* Image-left layout: wide image gets more space, text gets less */
+    .project-vertical.img-left {
+      grid-template-columns: 1fr 280px;
+    }
+
+    /* Image-right layout: text gets more space, image constrained */
+    .project-vertical.img-right {
+      grid-template-columns: 280px 1fr;
+    }
+
+    .project-vertical .project-img,
+    .project-vertical .project-img-vertical {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      display: block;
+    }
+    
+    .project-vertical:last-child,
+    .project:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    
+    .project-vertical-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project h3, .project-vertical h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    
+    .project > p, .project-vertical-content > p { font-size: 0.95rem; margin-bottom: 1rem; }
+
+    .caption{
+      font-size: 0.95rem; margin-bottom: 1rem;
+      text-align: center;
+      color: #888;
+    }
+
+    .center {
+      display: flex;
+     justify-content: center;
+     align-items: center;
+    }       
+    
+    .project-vertical-content a, .project a { color: #1a1a1a; }
+    
+    /* Make layout for work sample page */
+    .sample-body{
+      align-items: left;
+      .sample-body > p, .sample-body > p { font-size: 0.95rem; margin-bottom: 1rem; }
+    }
+
+    .bullets{
+      align-items: left;
+      margin-left: 50px;
+    }
+   
+    /* Make links on sample body black */
+    .sample-body a, .project a { color: #1a1a1a; }
+
+    footer {
+      background: #0a0a0a;
+      color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1.25rem;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+  /* Video Embed*/
+  .video-container {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.video-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  align-items: center;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 50px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 12px;
+}
+
+.play-button::before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 15px;
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent white;
+}
+
+    
+
+    footer a:hover { opacity: 1; }
+    
+    @media (max-width: 700px) {
+      .top-nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .nav-links a { font-size: 0.75rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { width:335px; flex:none; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .project-vertical,
+      .project-vertical.img-left,
+      .project-vertical.img-right { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <div class="logo">Sandra Chai</div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="worksamples.html">Work Samples</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+
+      <section id="MGSE">
+        <h2>Lunar Solar Array</h2>
+        
+        <div class = "main-project-img"> <img class="main-project-img" src="static/NASA-TVAC.png" alt="NASA TVAC"> </div> 
+        <div class="caption"> Photo credit: NASA/David DeHoyos </div>
+          
+        <div class="sample-body">
+            <p>LAMPS (the Lunar Array Mast and Power System) is a Honeybee Robotics (Blue Origin, In-Space Systems) <a href="https://techport.nasa.gov/projects/116305" target="_blank" >NASA-funded project</a> aimed towards developing a <b> solar array for energy collection on the Moon.</b></p> <br>
+            
+            <p> Prior to testing within the historic <a href="https://www.nasa.gov/johnson/chamber_a/" target="_blank">Chamber A </a> at NASA JSC, a number of <b> ambient and thermal chamber tests of maximal mast deployment with subsystem integration</b> had to be completed.</p> <br>
+
+            <p> <b> I designed, developed, and fabricated the test fixture to integrate the deployable 50 ft tall mast, mast storage reel, base electrical box, and electrical umbilical spool.  </b></p> <br>
+            <p> I also helped assemble/ re-assemble and prepare all of the aluminum bands and doublers for the mast :)</p>
+            <div class = "main-project-img"> <img class="main-project-img" src="static/mgse.png" alt="LAMPS Test Stand"> </div> 
+            <div class="caption"> CAD of test stand with all subsystems integrated</div>
+              
+              <h3> Design Considerations </h3>
+            
+              <div class = "main-project-img"> <img class="main-project-img" src="static/test-stand -final.png" alt="LAMPS Test Stand (Physical)"> </div> 
+              <div class="caption"> Physical test stand after machining and assembly</div>
+
+              <div class="bullets">
+                <ul>
+                  <li>Total structure height: shorter = greater mast deployment height</li> 
+                  <li>Total mass & footprint: minimized = easily portable for testing</li>
+                  <li>Electrical harnessing constraints and alignment for electrical connectors </li>
+                  <li>Stability of structure </li>
+                  <li>Minimizing machining due to required turn-around time</li> <br>
+                </ul>
+              </div>
+              
+              <h3>Solution</h3>
+            
+              <div class = "main-project-img"> <img class="main-project-img" src="static/lamps-phys.png" alt="LAMPS Test Stand (Physical)"> </div> 
+              <div class="caption"> Mast before and after deployment in thermal chamber</div> 
+
+              <div class="bullets">
+                <ul>
+                  <li>Design 4" t-slot framing assembly in Autodesk Inventor CAD</li> 
+                  <li>Add 1" t-slot framing supports where needed </li>
+                  <li>Integrate all sub-assemblies and confirm positioning with relevant sub-teams</li>
+                  <li>Add removable caster wheels to structure</li><br>
+                </ul>
+              </div>
+            
+              <h3>Deployment Testing</h3>
+
+              <div class = "main-project-img"> <img class="main-project-img" src="static/HBR-team.png" alt="LAMPS Team"> </div> 
+              <div class="caption"> First full-stroke outdoor deployment with the team :)</div>
+
+            
+              <div class="bullets">
+                <ul>
+                  <li>Test stand was used in thermal cycling, ambient mast deployments, and full-stroke deployment tests</li> <br>
+                </ul>
+              </div>
+       
+              <h3>Results</h3>
+              
+              <div class="center">
+                  <img class="main-project-img" src="static/honeybee_lamps.gif">
+              </div>
+              
+              <div class="caption"> Full deployment at NASA JSC's thermal vaccuum chamber with all sub-systems integrated! </div>
+            
+              <div class="bullets">
+                <ul>
+                  <li>At the end of my internship, LAMPS was successfully deployed at NASA JSC (where Apollo and JWST were tested!)</li> <br>
+                </ul>
+              </div>
+
+
+              <h3>ASME video about the project!</h3><br>
+
+              <div class="video-container" onclick="loadVideo(this)">
+                <img src="https://img.youtube.com/vi/6-gmxKVD_BY/hqdefault.jpg" alt="LAMPS ASME video thumbnail">
+                <div class="play-button"></div>
+              </div>
+
+              <script>
+                function loadVideo(el) {
+                  el.innerHTML = `
+                    <iframe
+                      src="https://www.youtube.com/embed/6-gmxKVD_BY?autoplay=1&mute=1"
+                      title="LAMPS ASME Video"
+                      frameborder="0"
+                      allow="autoplay; encrypted-media; picture-in-picture"
+                      allowfullscreen
+                      style="width:100%; height:100%;">
+                    </iframe>
+                  `;
+                }
+              </script>
+              <div class="caption"> Spot me at 1:24 - 1:34 :)</div>
+    </div>
+  </main>
+
+  <footer id="contact">
+    <a href="mailto:sandrachai.eng@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/sandrachai/"target="_blank">LinkedIn</a>
+    <a href="https://github.com/sandrachai"target="_blank">GitHub</a>
+  </footer>
+
+</body>
+</html>
